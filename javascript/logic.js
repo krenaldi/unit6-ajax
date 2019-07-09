@@ -1,4 +1,4 @@
-var topics = ["Deadpool", "The Matrix", "Lost", "Stranger Things", "Spider-Man", "Archer", "Annabelle", "John Wick", "Family Guy", "Rick & Morty"];
+var topics = ["Deadpool", "The Matrix", "Lost", "Stranger Things", "Spider-Man", "Archer", "Annabelle", "John Wick", "Family Guy", "Rick and Morty"];
 
 // Function to create dynamic buttons from the topics array
 function renderButtons() {
@@ -36,13 +36,16 @@ function displayGifs(){
             var gifDiv = $("<div>");
             var p = $("<p>").text(results[i].rating);
             var gifImage = $("<img>");
-            gifImage.addClass("gif");
+            var imageStill = results[i].images.fixed_height_still.url;
+            var imageAnimate = results[i].images.fixed_height.url;
+            // gifImage.attr("src", image);
             gifImage.attr({
-                src: results[i].images.fixed_height.url,
-                "data-still": results[i].images.fixed_height.url,
-                "data-animate": results[i].images.fixed_height.url,
+                src: image,
+                "data-still": imageStill,
+                "data-animate": imageAnimate,
                 "data-state": "still"
             });
+            gifImage.addClass("gif");
             gifDiv.append(gifImage);
             gifDiv.append(p);
             $("#gifs-appear-here").prepend(gifDiv);
@@ -59,12 +62,28 @@ $("#add-gif-button").on("click", function(event) {
     var topic = $("#gif-input").val().trim();
     // Adding topic from textbox to topics array
     topics.push(topic);
+    // Clear textbox after submit
+    $("#gif-input").empty();
     // Call renderButtons function to handle processing of updated topics array
     renderButtons();
+    
 });
 
 // Calling renderButtons function to display the initial buttons in the topics array
 renderButtons();
 
 // Adding click event for all button elements with class of gif to trigger the displayGifs function
-$("button").on("click", ".gif", displayGifs);
+$(document).on("click", ".gif-btn", displayGifs);
+
+// Click event to pause and animate gifs 
+$(".gif").on("click", function(){
+    var state = $(this).attr("data-state");
+    if (state == "still"){
+        var animateURL = $(this).attr("data-animate");
+        $(this).attr("src", animateURL);
+        $(this).attr("data-state", "animate");        
+    } else {
+        $(this).attr("src", $(this).attr("data-still"));
+        $(this).attr("data-state", "still");
+    }
+})
