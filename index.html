@@ -6,23 +6,23 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
-<link rel="stylesheet" href="style.css">
-<title>AJAX with Giphy</title>
+<link rel="stylesheet" href="css/style.css">
+<title>GifTastic</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col" id="button-div">
+            <div class="col-12" id="button-div" style="border: 1px solid gray">
 
             </div>
         </div>
         <div class="row">
-            <div class="col-8" id="gifs-appear-here">
+            <div class="col-9" id="gifs-appear-here" style="border: 1px solid gray">
 
             </div>
-            <div class="col-4">
+            <div class="col-3" style="border: 1px solid gray">
                     <form id="gif-form">
-                            <label for="gif-input">Add a Movie or Actor/Actress for more gifs</label>
+                            <label for="gif-input">Add a Movie or TV Show for more gifs</label>
                             <input type="text" id="gif-input">
                             <br>
                             <!-- Button triggers new button to be added -->
@@ -34,5 +34,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="javascript/logic.js"></script>
 </body>
 </html>
