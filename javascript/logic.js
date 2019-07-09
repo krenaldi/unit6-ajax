@@ -40,7 +40,7 @@ function displayGifs(){
             var imageAnimate = results[i].images.fixed_height.url;
             // gifImage.attr("src", image);
             gifImage.attr({
-                src: image,
+                src: imageStill,
                 "data-still": imageStill,
                 "data-animate": imageAnimate,
                 "data-state": "still"
@@ -63,7 +63,7 @@ $("#add-gif-button").on("click", function(event) {
     // Adding topic from textbox to topics array
     topics.push(topic);
     // Clear textbox after submit
-    $("#gif-input").empty();
+    $("#gif-input").text("");
     // Call renderButtons function to handle processing of updated topics array
     renderButtons();
     
@@ -76,7 +76,7 @@ renderButtons();
 $(document).on("click", ".gif-btn", displayGifs);
 
 // Click event to pause and animate gifs 
-$(".gif").on("click", function(){
+$("body").on("click", ".gif", function(){
     var state = $(this).attr("data-state");
     if (state == "still"){
         var animateURL = $(this).attr("data-animate");
@@ -86,4 +86,4 @@ $(".gif").on("click", function(){
         $(this).attr("src", $(this).attr("data-still"));
         $(this).attr("data-state", "still");
     }
-})
+});
