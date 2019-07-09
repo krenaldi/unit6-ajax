@@ -21,7 +21,11 @@ function renderButtons() {
 // Function that renders the HTML to display gifs from Giphy
 function displayGifs(){
     var topic = $(this).attr("data-name");
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
+    var limit = 10;
+    // if (limit == 10){
+    //     limit +=10;
+    // }
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=" + limit;
 
     //Creating AJAX call for specific button clicked
     $.ajax({
