@@ -1,0 +1,31 @@
+button {
+    margin: 10px 5px 10px 5px;
+    background-color: blue;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#add-gif-button {
+    margin-top: 5px;
+}
+
+.gif-div {
+    float: left;
+    margin: 10px;
+}
+
+input[type=button], input[type=submit] {
+    background-color: blue;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  input[type=text]:focus {
+    border: 3px solid #555;
+  }
