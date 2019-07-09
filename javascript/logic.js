@@ -1,4 +1,4 @@
-var topics = ["Deadpool", "The Matrix", "Lost", "Stranger Things", "Spider-Man", "Archer", "Annabelle", "John Wick", "Family Guy", "Rick and Morty"];
+var topics = ["Deadpool", "The Matrix", "Lost", "Stranger Things", "Spider-Man", "Archer", "Annabelle", "John Wick", "Family Guy", "Rick and Morty", "Jaws", "Avengers", "The Flash", "Mike Tyson's Mysteries", "Veep", "Silicon Valley"];
 
 // Function to create dynamic buttons from the topics array
 function renderButtons() {
@@ -33,12 +33,11 @@ function displayGifs(){
         var results = response.data;
         // Looping thru response data and generate divs to hold images & ratings info
         for (var i=0; i < results.length; i++){
-            var gifDiv = $("<div>");
+            var gifDiv = $("<div>").addClass("gif-div");
             var p = $("<p>").text(results[i].rating);
             var gifImage = $("<img>");
             var imageStill = results[i].images.fixed_height_still.url;
             var imageAnimate = results[i].images.fixed_height.url;
-            // gifImage.attr("src", image);
             gifImage.attr({
                 src: imageStill,
                 "data-still": imageStill,
@@ -62,11 +61,10 @@ $("#add-gif-button").on("click", function(event) {
     var topic = $("#gif-input").val().trim();
     // Adding topic from textbox to topics array
     topics.push(topic);
-    // Clear textbox after submit
-    $("#gif-input").text("");
     // Call renderButtons function to handle processing of updated topics array
     renderButtons();
-    
+    // Clear textbox after submit
+    $("#gif-input").val("");
 });
 
 // Calling renderButtons function to display the initial buttons in the topics array
