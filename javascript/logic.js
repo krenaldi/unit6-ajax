@@ -20,6 +20,7 @@ function renderButtons() {
 
 // Function that renders the HTML to display gifs from Giphy
 function displayGifs(){
+    $("#gifs-appear-here").empty();
     var topic = $(this).attr("data-name");
     var limit = 10;
     // if (limit == 10){
@@ -38,7 +39,7 @@ function displayGifs(){
         // Looping thru response data and generate divs to hold images & ratings info
         for (var i=0; i < results.length; i++){
             var gifDiv = $("<div>").addClass("gif-div");
-            var p = $("<p>").text(results[i].rating);
+            var p = $("<p>").text("Rating: " + results[i].rating);
             var gifImage = $("<img>");
             var imageStill = results[i].images.fixed_height_still.url;
             var imageAnimate = results[i].images.fixed_height.url;
